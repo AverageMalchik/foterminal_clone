@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_unlocked_screen.main_menu
 class unlocked_screen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_unlocked_screen)
         main_menu.visibility = View.GONE
         Handler(Looper.getMainLooper()).postDelayed({
