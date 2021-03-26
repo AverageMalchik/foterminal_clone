@@ -90,7 +90,7 @@
             app:backgroundTint="@null" />
 
         <Button
-            android:id="@+id/unlock"
+            android:id="@+id/reward"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

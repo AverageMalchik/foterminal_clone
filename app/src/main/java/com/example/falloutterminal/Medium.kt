@@ -18,9 +18,9 @@ import java.util.*
 import kotlin.random.Random
 
 
-class MainActivity : AppCompatActivity() {
+class Medium : AppCompatActivity() {
 
-    private var teasystatus: Boolean = false
+    private var tmedstatus:Boolean=false
     var attemptcounter = 3
     var hmdr = 0
     val brackets = arrayOf<String>("()", "<>", "[]", "{}")
@@ -34,10 +34,10 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_medium)
 
-        teasystatus=false
-        duds = arrayOf<String>("", "", "", "", "", "")
+        tmedstatus=false
+        duds = arrayOf<String>("", "", "", "")
         attempt = arrayOf<ImageView>(at1, at2, at3, at4)
         enterb.setText("<enter>")
 
@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         pre_text.setText("")
         var hex: String = col1.text.toString()
         var hex1: String = pre_text.text.toString()
-        var allwords = resources.getStringArray(R.array.words)
-        val fix: String = "0xF"
+        var allwords = resources.getStringArray(R.array.words2)
+        val fix: String = "0xH"
         val post4 = arrayOf<String>("A", "9")
         val post5 = arrayOf<String>(
             "A",
@@ -237,7 +237,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         var it = 0
-        for (i in 0..12) {
+        for (i in 0..10) {
             if (!wordsfinal[i].startsWith("<") && !wordsfinal[i].startsWith("[") && !wordsfinal[i].startsWith(
                     "("
                 ) && !wordsfinal[i].startsWith(
@@ -291,15 +291,15 @@ class MainActivity : AppCompatActivity() {
         } else if (wordsfinala.contains(userinput)) {
             if (userinput == password) {
                 resultc += "> " + userinput + "\n> Access Granted\n"
-                val intent: Intent = Intent(this@MainActivity, unlocked_screen::class.java)
-                teasystatus=true
-                val intent2:Intent= Intent(this,MainMenu::class.java)
-                intent2.putExtra("statuseasy",teasystatus)
+                val intent: Intent = Intent(this@Medium, unlocked_screen::class.java)
+                tmedstatus=true
+                val intent2:Intent=Intent(this,MainMenu::class.java)
+                intent2.putExtra("statusmed",tmedstatus)
                 startActivity(intent)
                 finish()
             } else {
                 var c = 0
-                for (i in 0..6) {
+                for (i in 0..10) {
                     if (userinput.elementAt(i) == password.elementAt(i)
                     ) {
                         c++
@@ -321,7 +321,7 @@ class MainActivity : AppCompatActivity() {
         }
         //exiting to fail screen
         if (attemptcounter == -1) {
-            val intent: Intent = Intent(this@MainActivity, fail_screen::class.java)
+            val intent: Intent = Intent(this@Medium, fail_screen::class.java)
             startActivity(intent)
             finish()
         }
@@ -352,9 +352,9 @@ class MainActivity : AppCompatActivity() {
             "?",
             "@"
         )
-        for (h in 0..5) {
+        for (h in 0..3) {
             var bracselected = brackets[Random.nextInt(4)]
-            var randlength = Random.nextInt(8)
+            var randlength = Random.nextInt(10)
             var dud: String = ""
             if (randlength != 0) {
                 for (i in 0..randlength - 1) {
@@ -370,15 +370,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getstartpost(): IntArray {
-        var a1 = IntArray(13) { 0 }
-        var c1 = 9
-        var c2 = 50
-        for (i in 0..12) {
-            if (c2 > 622)
-                c2 = 622
+        var a1 = IntArray(11) { 0 }
+        var c1 = 0
+        var c2 = 45
+        for (i in 0..10) {
+            if (c2 > 618)
+                c2 = 618
             a1[i] = Random.nextInt(c1, c2)
-            c1 += 49
-            c2 += 49
+            c1 += 52
+            c2 += 52
         }
         return a1
     }
